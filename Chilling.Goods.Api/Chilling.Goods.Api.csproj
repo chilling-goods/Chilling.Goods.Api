@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Chilling.Goods.Api.Config\Chilling.Goods.Api.Config.csproj" />
     <ProjectReference Include="..\Chilling.Goods.Api.Core\Chilling.Goods.Api.Core.csproj" />
+    <ProjectReference Include="..\Chilling.Goods.Api.Data\Chilling.Goods.Api.Data.csproj" />
   </ItemGroup>
 
 </Project>
