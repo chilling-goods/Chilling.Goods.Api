@@ -1,0 +1,92 @@
+// TODO: удалить после переноса
+
+Product{ 
+guid Id
+string Title
+string Size
+decimal Price 
+string Description // описание с содержанием html tags (<b>message</b>)
+Brand Brand
+ProductType ProductType 
+list<Image> Images
+List<ProductStorConvention> Stores
+*Rating Rating // оценки по товару // добавить вместе с добавление и реализацией юзеров и заказов
+*List<Tags> Tags // пока непонятно зачем (todo: обсудиить)
+}
+
+
+Catalog{
+guid Id
+string Name
+List<ProductType> ProductTypes
+}
+ProductType{ // уголь, табак, кальян и тд
+guid Id
+bool IsDisplay
+string Name
+List<ProductTypeBrandConvention> Brands
+}
+ProductTypeBrandConvention{
+guid id
+ProductType ProductType 
+Brand Brand
+}
+Brand{
+guid id
+string Name
+List<ProductTypeBrandConvention> ProductTypes
+List<Product> Products
+*возможно придеться еще расширять*
+}
+*Получаем все товары - каталог => типы продука => бренды => товары, где product.ProductType.id содержится в brand.ProductTypes.select(x=>x.ProductType.id)
+и store.id равен указанному пользователем
+*Возможено отсутствие отображения ProductType(isDisplay), в этом случае выводим все бренды находящиеся в этом ProductType (Корректная ситуация только тогда, когда в каталоге только одна запись про ProductType).
+*При заполнении ProductTypes в каталоге сделать валидацию, что запрещено добавлять в этот каталог еще один ProductType если уже существует 1 ProductType с IsDisplay = false.
+Если необходимо расширить данный каталог добавив новый ProductType, то он не должен быть isDisplay = False, и до этого (если имеется) ProductType с isDisplay = false изменить на true и заполнить название (ProductType.Name)
+***можно подумать в дальнейшем над оптимизацией***
+
+
+Store{
+guid Id
+string Name
+string Phone
+Address Address
+List<ProductStorConvention> Products
+
+* подумать про дорставку и самовывоз, а также время работы и того и того (возможно есть смысл вынести это в отдельную модель)
+* Если интегрироваться с службой доставки, то нужно доставку привязывать к конкретному стору
+}
+ProductStoreConvention{
+guid Id
+Product Product
+Store Store
+int Count //кол-во товара
+}
+
+
+*Tag{
+guid id
+string name
+}
+
+
+Address{
+guid id
+string FullAddress // полный адрес
+string Region // регион
+string District // район (возможно не нужен)
+string City // город
+string Locality // населенный пункт
+string Street // улица
+string House // дом
+string Corpuse // корпус
+string Building // строение
+string Flat // квартира
+string Index // индекс
+}
+
+Image{
+id
+string Image // картинка в формате base64
+}
+
