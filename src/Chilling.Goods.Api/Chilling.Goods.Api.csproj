@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\Chilling.Goods.Api.xml</DocumentationFile>
+    <OutputPath>bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\Chilling.Goods.Api.xml</DocumentationFile>
+    <OutputPath>bin\Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Http" Version="6.0.0-preview.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Chilling.Goods.Api.Config\Chilling.Goods.Api.Config.csproj" />
+    <ProjectReference Include="..\Chilling.Goods.Api.Core\Chilling.Goods.Api.Core.csproj" />
+    <ProjectReference Include="..\Chilling.Goods.Api.Data\Chilling.Goods.Api.Data.csproj" />
+  </ItemGroup>
+
+</Project>
