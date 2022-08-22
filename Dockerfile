@@ -9,7 +9,7 @@ RUN dotnet restore && \
 ##########################################################
 FROM build AS publish
 
-RUN dotnet publish /src/Chilling.Goods.Api --no-restore --no-build -c Release -o /app
+RUN dotnet publish /src/src/Chilling.Goods.Api --no-restore --no-build -c Release -o /app
 ##########################################################
 ##########################################################
 
