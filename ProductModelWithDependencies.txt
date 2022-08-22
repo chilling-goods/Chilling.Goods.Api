@@ -35,7 +35,6 @@ Brand{
 guid id
 string Name
 List<ProductTypeBrandConvention> ProductTypes
-List<Product> Products
 *возможно придеться еще расширять*
 }
 *Получаем все товары - каталог => типы продука => бренды => товары, где product.ProductType.id содержится в brand.ProductTypes.select(x=>x.ProductType.id)
