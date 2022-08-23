@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Chilling.Goods.Api.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,14 +17,10 @@ builder.Services.AddApiVersioning(options =>
     options.ApiVersionReader = new HeaderApiVersionReader("api-version");
 });
 
-var sqlConnectionString = builder.Configuration.GetConnectionString("DataAccessPostgreSqlProvider");
+builder.Services.AddDbContext<GoodsDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DataAccessPostgreSqlProvider"))
+);
 
-//builder.Services.AddDbContext<GoodsDbContext>(options =>
-//    options.UseNpgsql(
-//        sqlConnectionString,
-//        b => b.MigrationsAssembly("Chilling.Goods.Api.Data")
-//    )
-//);
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
