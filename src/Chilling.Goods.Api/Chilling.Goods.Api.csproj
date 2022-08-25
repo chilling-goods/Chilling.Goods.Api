@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\libs\Chilling.Platform.Mapper\Chilling.Platform.Mapper.csproj" />
     <ProjectReference Include="..\..\libs\Chilling.Platform.Redis\Chilling.Platform.Redis.csproj" />
     <ProjectReference Include="..\Chilling.Goods.Api.Config\Chilling.Goods.Api.Config.csproj" />
     <ProjectReference Include="..\Chilling.Goods.Api.Core\Chilling.Goods.Api.Core.csproj" />

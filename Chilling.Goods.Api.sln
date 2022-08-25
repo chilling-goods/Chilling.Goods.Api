@@ -1,29 +1,27 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chilling.Goods.Api", "src\Chilling.Goods.Api\Chilling.Goods.Api.csproj", "{BF1018FF-827F-4225-AA32-91108413D59F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chilling.Goods.Api", "src\Chilling.Goods.Api\Chilling.Goods.Api.csproj", "{BF1018FF-827F-4225-AA32-91108413D59F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chilling.Goods.Api.Config", "src\Chilling.Goods.Api.Config\Chilling.Goods.Api.Config.csproj", "{91B89878-A015-44A4-BC56-8E3AE68670F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chilling.Goods.Api.Config", "src\Chilling.Goods.Api.Config\Chilling.Goods.Api.Config.csproj", "{91B89878-A015-44A4-BC56-8E3AE68670F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chilling.Goods.Api.Core", "src\Chilling.Goods.Api.Core\Chilling.Goods.Api.Core.csproj", "{79FF3433-BD7E-4875-861A-712A11FEDBA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chilling.Goods.Api.Core", "src\Chilling.Goods.Api.Core\Chilling.Goods.Api.Core.csproj", "{79FF3433-BD7E-4875-861A-712A11FEDBA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chilling.Goods.Api.Data", "src\Chilling.Goods.Api.Data\Chilling.Goods.Api.Data.csproj", "{5852DD44-5B4C-405A-B315-DE0EB6DD47C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chilling.Goods.Api.Data", "src\Chilling.Goods.Api.Data\Chilling.Goods.Api.Data.csproj", "{5852DD44-5B4C-405A-B315-DE0EB6DD47C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{754D7885-06E2-476C-8804-1731C421B2D7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{75C4FAEF-3104-483E-9724-70FF7B087665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chilling.Platform.Redis", "libs\Chilling.Platform.Redis\Chilling.Platform.Redis.csproj", "{42092F77-4EB6-4B78-B802-BB67232763C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chilling.Platform.Redis", "libs\Chilling.Platform.Redis\Chilling.Platform.Redis.csproj", "{42092F77-4EB6-4B78-B802-BB67232763C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chilling.Platform.Mapper", "libs\Chilling.Platform.Mapper\Chilling.Platform.Mapper.csproj", "{0B662274-85B2-4404-AA0E-1232DF33F1E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BF1018FF-827F-4225-AA32-91108413D59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -46,6 +44,13 @@ Global
 		{42092F77-4EB6-4B78-B802-BB67232763C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42092F77-4EB6-4B78-B802-BB67232763C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42092F77-4EB6-4B78-B802-BB67232763C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B662274-85B2-4404-AA0E-1232DF33F1E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B662274-85B2-4404-AA0E-1232DF33F1E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B662274-85B2-4404-AA0E-1232DF33F1E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B662274-85B2-4404-AA0E-1232DF33F1E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BF1018FF-827F-4225-AA32-91108413D59F} = {754D7885-06E2-476C-8804-1731C421B2D7}
@@ -53,5 +58,9 @@ Global
 		{79FF3433-BD7E-4875-861A-712A11FEDBA9} = {754D7885-06E2-476C-8804-1731C421B2D7}
 		{5852DD44-5B4C-405A-B315-DE0EB6DD47C0} = {754D7885-06E2-476C-8804-1731C421B2D7}
 		{42092F77-4EB6-4B78-B802-BB67232763C9} = {75C4FAEF-3104-483E-9724-70FF7B087665}
+		{0B662274-85B2-4404-AA0E-1232DF33F1E6} = {75C4FAEF-3104-483E-9724-70FF7B087665}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41B6E129-C982-4A23-BF6C-84887090DDF6}
 	EndGlobalSection
 EndGlobal

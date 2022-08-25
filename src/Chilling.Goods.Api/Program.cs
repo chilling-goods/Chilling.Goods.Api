@@ -4,6 +4,7 @@ using System.Text.Json;
 using Asp.Versioning;
 using Chilling.Goods.Api.Config;
 using Chilling.Goods.Api.Data.Models;
+using Chilling.Platform.Mapper.Extensions;
 using Chilling.Platform.Redis.Extensions;
 using Chilling.Platform.Redis.Models;
 using Microsoft.AspNetCore.Diagnostics;
@@ -20,6 +21,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices();
 
 builder.Services.AddRedisCache(builder.Configuration);
+
+builder.Services.AddSimpleMapper();
 
 // builder.Services.AddApiVersioning(options =>
 // {
