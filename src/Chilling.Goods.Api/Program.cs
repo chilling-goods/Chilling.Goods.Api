@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Chilling.Goods.Api.Config;
 using Chilling.Goods.Api.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,8 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplicationServices();
 
 builder.Services.AddApiVersioning(options =>
 {
