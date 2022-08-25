@@ -1,12 +1,14 @@
-using System.Text.Json.Serialization;
-
 namespace Chilling.Goods.Api.Models;
 
+/// <summary>
+/// Модель тэга
+/// </summary>
 public class TagVm
 {
     /// <summary>
     /// Идентификатор
     /// </summary>
+    [JsonPropertyName("id")]
     public Guid Id { get; set; }
 
     /// <summary>

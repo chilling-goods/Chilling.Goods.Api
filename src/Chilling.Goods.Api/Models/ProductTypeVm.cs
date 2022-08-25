@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Chilling.Goods.Api.Models
+﻿namespace Chilling.Goods.Api.Models
 {
     /// <summary>
     /// Типы продукта
@@ -10,25 +8,25 @@ namespace Chilling.Goods.Api.Models
         /// <summary>
         /// Id
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
         /// <summary>
         /// Название
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Отображение типа продукта в списке каталога (не отображать при условии если нет других типов)
         /// </summary>
-        [JsonProperty("isDisplay")]
+        [JsonPropertyName("isDisplay")]
         public bool IsDisplay { get; set; }
 
         /// <summary>
         /// Бренды
         /// </summary>
-        [JsonProperty("brands")]
+        [JsonPropertyName("brands")]
         public List<BrandVm> Brands { get; set; }
     }
 }

@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace Chilling.Goods.Api.Models;
 
 /// <summary>
@@ -7,6 +5,12 @@ namespace Chilling.Goods.Api.Models;
 /// </summary>
 public class ProductVm
 {
+    /// <summary>
+    /// Идентификатор
+    /// </summary>
+    [JsonPropertyName("id")]
+    public Guid Id { get; set; }
+    
     /// <summary>
     /// Название
     /// </summary>
