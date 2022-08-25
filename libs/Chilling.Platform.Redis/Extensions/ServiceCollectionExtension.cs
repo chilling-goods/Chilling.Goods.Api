@@ -9,7 +9,7 @@ namespace Chilling.Platform.Redis.Extensions;
 
 public static class ServiceCollectionExtension
 {
-    public static IServiceCollection AddSettingsKeeperCache(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddRedisCache(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<RedisSettings>(configuration.GetSection("Redis"));
         services.AddSingleton((provider) =>

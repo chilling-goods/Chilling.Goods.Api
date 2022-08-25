@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Mime;
 using System.Text.Json;
 using Asp.Versioning;
+using Chilling.Goods.Api.Config;
 using Chilling.Goods.Api.Data.Models;
 using Chilling.Platform.Redis.Extensions;
 using Chilling.Platform.Redis.Models;
@@ -16,7 +17,9 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSettingsKeeperCache(builder.Configuration);
+builder.Services.AddApplicationServices();
+
+builder.Services.AddRedisCache(builder.Configuration);
 
 // builder.Services.AddApiVersioning(options =>
 // {
