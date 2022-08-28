@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Chilling.Goods.Api.Models
+﻿namespace Chilling.Goods.Api.Models
 {
     /// <summary>
     /// Каталог
@@ -10,19 +8,19 @@ namespace Chilling.Goods.Api.Models
         /// <summary>
         /// ID
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
         /// <summary>
         /// Название
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Типы продукта
         /// </summary>
-        [JsonProperty("productTypes")]
+        [JsonPropertyName("productTypes")]
         public List<ProductTypeVm> ProductTypes { get; set; }
     }
 }
