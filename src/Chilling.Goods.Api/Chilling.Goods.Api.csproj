@@ -35,8 +35,4 @@
     <ProjectReference Include="..\Chilling.Goods.Api.Data\Chilling.Goods.Api.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Maps\" />
-  </ItemGroup>
-
 </Project>
