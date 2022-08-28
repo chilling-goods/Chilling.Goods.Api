@@ -1,4 +1,7 @@
-﻿using Chilling.Goods.Api.Models;
+﻿using Chilling.Goods.Api.Core.Interfaces;
+using Chilling.Goods.Api.Core.Models;
+using Chilling.Goods.Api.Models;
+using Chilling.Platform.Mapper.Abstracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chilling.Goods.Api.Controllers
@@ -10,16 +13,20 @@ namespace Chilling.Goods.Api.Controllers
     [ApiController]
     public class CatalogController : ControllerBase
     {
-        //TODO: раскометить после добавления реализации
-        //private readonly ICatalogService _service;
-        //private readonly IMapper _mapper;
+        private readonly ICatalogService _service;
+        private readonly IMapper _mapper;
 
-        //public CatalogController(ICatalogService service, IMapper mapper)
-        //{
-        //    _service = service;
-        //    _mapper = mapper;
+        /// <summary>
+        /// Контроллер
+        /// </summary>
+        /// <param name="service"></param>
+        /// <param name="mapper"></param>
+        public CatalogController(ICatalogService service, IMapper mapper)
+        {
+            _service = service;
+            _mapper = mapper;
 
-        // }
+        }
 
         /// <summary>
         /// Получить все каталоги 
@@ -28,13 +35,11 @@ namespace Chilling.Goods.Api.Controllers
         [HttpGet("")]
         public async Task<ActionResult<List<CatalogVm>>> GetAllAsync()
         {
-            //var response = await _service.GetAllAsync();
+            var response = await _service.GetAllAsync();
 
-            //var result = _mapper.Map<>(response);
+            var result = _mapper.Map<Catalog, CatalogVm>(response).ToList();
 
-            //return Ok(result);
-
-            throw new NotImplementedException();
+            return result;
         }
 
         [HttpPost("")]

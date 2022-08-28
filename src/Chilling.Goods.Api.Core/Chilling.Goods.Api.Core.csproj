@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Maps\" />
+      <ProjectReference Include="..\..\libs\Chilling.Platform.Mapper\Chilling.Platform.Mapper.csproj" />
+      <ProjectReference Include="..\..\libs\Chilling.Platform.Redis\Chilling.Platform.Redis.csproj" />
+      <ProjectReference Include="..\Chilling.Goods.Api.Data\Chilling.Goods.Api.Data.csproj" />
     </ItemGroup>
 
 </Project>

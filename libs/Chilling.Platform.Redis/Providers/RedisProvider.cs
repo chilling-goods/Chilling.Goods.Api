@@ -1,11 +1,10 @@
+using StackExchange.Redis;
 using System.Text;
 using System.Text.Json;
-using Chilling.Platform.Redis.Exceptions;
-using StackExchange.Redis;
 
 namespace Chilling.Platform.Redis.Providers;
 
-public class RedisProvider: IRedisProvider
+public class RedisProvider : IRedisProvider
 {
     private readonly IDatabase _database;
     private const int DefaultCacheLifetime = 8;
@@ -14,18 +13,18 @@ public class RedisProvider: IRedisProvider
     {
         _database = database;
     }
-    
+
     public async Task<T> GetAsync<T>(string cacheKey)
     {
         var data = await _database.StringGetAsync(cacheKey);
         if ((byte[])data is null)
-            throw new RedisKeyUndefinedException(cacheKey);
+            return default;
         var encodedData = Encoding.UTF8.GetString(data);
         return JsonSerializer.Deserialize<T>(encodedData);
     }
 
     public async Task SetAsync<T>(string cacheKey, T data, int? lifeTime = null)
-        where T: class
+        where T : class
     {
         var stringData = JsonSerializer.Serialize(data);
         var a = DateTime.Now.AddHours(1);
