@@ -54,12 +54,6 @@ public class ProductVm
     public IEnumerable<ImageVm> Images { get; set; }
 
     /// <summary>
-    /// 
-    /// </summary>
-    [JsonPropertyName("productStoreConventions")]
-    public IEnumerable<ProductStoreConventionVm> ProductStoreConventions { get; set; }
-
-    /// <summary>
     /// Тэги
     /// </summary>
     [JsonPropertyName("tags")]

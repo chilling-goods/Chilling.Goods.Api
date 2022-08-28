@@ -46,11 +46,6 @@ public class Product
     public IEnumerable<Image> Images { get; set; }
 
     /// <summary>
-    /// 
-    /// </summary>
-    public IEnumerable<ProductStoreConvention> ProductStoreConventions { get; set; }
-
-    /// <summary>
     /// Тэги
     /// </summary>
     public IEnumerable<Tag> Tags { get; set; }
