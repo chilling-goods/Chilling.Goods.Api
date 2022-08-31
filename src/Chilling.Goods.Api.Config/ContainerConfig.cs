@@ -13,6 +13,9 @@ public static class ContainerConfig
         services.AddScoped<ICatalogProvider, CatalogProvider>();
         services.AddScoped<ICatalogService, CatalogService>();
 
+        services.AddScoped<IBrandService, BrandService>();
+        services.AddScoped<IBrandProvider, BrandProvider>();
+
         return services;
     }
 }

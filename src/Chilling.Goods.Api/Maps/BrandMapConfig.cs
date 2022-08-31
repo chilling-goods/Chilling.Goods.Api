@@ -28,6 +28,9 @@ namespace Chilling.Goods.Api.Maps
                     ? _instance.Map<ProductTypeVm, ProductType>(source.ProductTypes).ToList()
                     : null
             });
+            
+            Mapper.AddMap<IEnumerable<Brand>, IEnumerable<BrandVm>>(source 
+                => _instance.Map<Brand, BrandVm>(source).ToList());
         }
     }
 }
