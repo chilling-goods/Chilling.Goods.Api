@@ -18,6 +18,6 @@
         /// <summary>
         /// Типы продукта
         /// </summary>
-        public List<ProductTypeDbo> ProductTypes { get; set; }
+        public ICollection<ProductTypeBrandConventionDbo> ProductTypes { get; set; }
     }
 }

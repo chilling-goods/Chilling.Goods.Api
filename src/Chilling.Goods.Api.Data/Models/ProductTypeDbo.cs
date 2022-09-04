@@ -20,9 +20,13 @@
         /// </summary>
         public bool IsDisplay { get; set; }
 
+        public CatalogDbo Catalog { get; set; }
+
+        public Guid CatalogId { get; set; }
+
         /// <summary>
         /// Бренды
         /// </summary>
-        public List<BrandDbo> Brands { get; set; }
+        public ICollection<ProductTypeBrandConventionDbo> Brands { get; set; }
     }
 }
