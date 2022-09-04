@@ -19,7 +19,6 @@ namespace Chilling.Goods.Api.Data.Providers
                         {
                             Name = "Кальян",
                             IsDisplay = true,
-                            Brands = new List<BrandDbo> { new BrandDbo { Id = Guid.NewGuid() } }
                         }
                     }
                 }

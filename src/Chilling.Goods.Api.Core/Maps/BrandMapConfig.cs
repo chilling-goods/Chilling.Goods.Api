@@ -15,18 +15,27 @@ namespace Chilling.Goods.Api.Core.Maps
             {
                 Id = source.Id,
                 Name = source.Name,
-                ProductTypes = source.ProductTypes != null
-                    ? _instance.Map<ProductTypeDbo, ProductType>(source.ProductTypes).ToList()
-                    : null
+                ProductTypes = source.ProductTypes?.Select(x => _instance.Map<ProductTypeDbo, ProductType>(x.ProductType))?.ToList()
             });
 
-            Mapper.AddMap<Brand, BrandDbo>((source) => new BrandDbo
+            Mapper.AddMap<Brand, BrandDbo>((source) =>
             {
-                Id = source.Id,
-                Name = source.Name,
-                ProductTypes = source.ProductTypes != null
-                    ? _instance.Map<ProductType, ProductTypeDbo>(source.ProductTypes).ToList()
-                    : null
+                var brand = new BrandDbo
+                {
+                    Id = source.Id,
+                    Name = source.Name,
+                };
+
+                brand.ProductTypes = source.ProductTypes?.Aggregate(new List<ProductTypeBrandConventionDbo>(), (res, data) =>
+                {
+                    res.Add(new ProductTypeBrandConventionDbo
+                    {
+                        Brand = brand,
+                        ProductType = _instance.Map<ProductType, ProductTypeDbo>(data)
+                    });
+                    return res;
+                });
+                return brand;
             });
         }
     }

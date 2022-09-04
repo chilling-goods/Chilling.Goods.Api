@@ -3,6 +3,7 @@ using System;
 using Chilling.Goods.Api.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Chilling.Goods.Api.Data.Migrations
 {
     [DbContext(typeof(GoodsDbContext))]
-    partial class GoodsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220904165028_Migration_0.0.1")]
+    partial class Migration_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
