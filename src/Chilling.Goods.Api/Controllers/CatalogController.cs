@@ -45,19 +45,31 @@ namespace Chilling.Goods.Api.Controllers
         [HttpPost("")]
         public async Task<ActionResult<List<CatalogVm>>> AddAsync([FromBody] CatalogVm catalog)
         {
-            throw new NotImplementedException();
+            var mapResult = _mapper.Map<CatalogVm, Catalog>(catalog);
+            await _service.AddAsync(mapResult);
+            return NoContent();
         }
 
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateAsync([FromBody] CatalogVm catalog, Guid id)
         {
-            throw new NotImplementedException();
+            var mapResult = _mapper.Map<CatalogVm, Catalog>(catalog);
+            await _service.UpdateAsync(mapResult, id);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            await _service.DeleteAsync(id);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> ClearCacheAsync()
+        {
+            await _service.СlearCacheAsync();
+            return NoContent();
         }
     }
 }

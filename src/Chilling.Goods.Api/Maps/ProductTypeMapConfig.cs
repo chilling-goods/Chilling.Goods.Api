@@ -15,9 +15,7 @@ namespace Chilling.Goods.Api.Core.Maps
                 Id = source.Id,
                 Name = source.Name,
                 IsDisplay = source.IsDisplay,
-                Brands = source.Brands != null
-                    ? _instance.Map<Brand, BrandVm>(source.Brands).ToList()
-                    : null
+                Brands = _instance.Map<Brand, BrandVm>(source.Brands)?.ToList()
             });
 
             Mapper.AddMap<ProductTypeVm, ProductType>((source) => new ProductType
@@ -25,9 +23,7 @@ namespace Chilling.Goods.Api.Core.Maps
                 Id = source.Id,
                 Name = source.Name,
                 IsDisplay = source.IsDisplay,
-                Brands = source.Brands != null
-                    ? _instance.Map<BrandVm, Brand>(source.Brands).ToList()
-                    : null
+                Brands = _instance.Map<BrandVm, Brand>(source.Brands)?.ToList()
             });
         }
     }

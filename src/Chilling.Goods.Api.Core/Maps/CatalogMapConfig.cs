@@ -15,18 +15,14 @@ namespace Chilling.Goods.Api.Core.Maps
             {
                 Id = source.Id,
                 Name = source.Name,
-                ProductTypes = source.ProductTypes != null
-                    ? _instance.Map<ProductTypeDbo, ProductType>(source.ProductTypes).ToList()
-                    : null
+                ProductTypes = _instance.Map<ProductTypeDbo, ProductType>(source.ProductTypes)?.ToList()
             });
 
             Mapper.AddMap<Catalog, CatalogDbo>((source) => new CatalogDbo
             {
                 Id = source.Id,
                 Name = source.Name,
-                ProductTypes = source.ProductTypes != null
-                    ? _instance.Map<ProductType, ProductTypeDbo>(source.ProductTypes).ToList()
-                    : null
+                ProductTypes = _instance.Map<ProductType, ProductTypeDbo>(source.ProductTypes)?.ToList()
             });
         }
     }

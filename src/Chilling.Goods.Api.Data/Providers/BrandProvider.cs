@@ -3,7 +3,7 @@ using Chilling.Goods.Api.Data.Models;
 
 namespace Chilling.Goods.Api.Data.Providers;
 
-public class BrandProvider: IBrandProvider
+public class BrandProvider : IBrandProvider
 {
     public async Task<IEnumerable<BrandDbo>> GetAsync(CancellationToken cancellationToken)
     {
@@ -12,22 +12,24 @@ public class BrandProvider: IBrandProvider
             new BrandDbo()
             {
                 Name = "test 1",
-                ProductTypes = new List<ProductTypeDbo>()
+                ProductTypes = new List<ProductTypeBrandConventionDbo>()
                 {
-                    new ProductTypeDbo()
+                    new ProductTypeBrandConventionDbo()
                     {
-                        Name = "test product type"
+                        Brand = null,
+                        ProductType = new ProductTypeDbo{ Name= "test product type" }
                     }
                 }
             },
             new BrandDbo()
             {
                 Name = "test 2",
-                ProductTypes = new List<ProductTypeDbo>()
+                ProductTypes = new List<ProductTypeBrandConventionDbo>()
                 {
-                    new ProductTypeDbo()
+                    new ProductTypeBrandConventionDbo()
                     {
-                        Name = "test product type"
+                        Brand = null,
+                        ProductType = new ProductTypeDbo{ Name= "test product type" }
                     }
                 }
             }

@@ -10,7 +10,7 @@ public interface IBrandService
     /// <param name="cancellationToken">Токен</param>
     /// <returns>Список брендов</returns>
     Task<IEnumerable<Brand>> GetAsync(CancellationToken cancellationToken);
-    
+
     /// <summary>
     /// Добавление нового бренда
     /// </summary>
@@ -35,4 +35,10 @@ public interface IBrandService
     /// <param name="cancellationToken">Токен</param>
     /// <returns></returns>
     Task DeleteAsync(Guid id, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Очистка кеша
+    /// </summary>
+    /// <returns></returns>
+    Task ClearCacheAsync();
 }

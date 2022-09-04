@@ -1,4 +1,3 @@
-using System.Net;
 using Chilling.Goods.Api.Core.Interfaces;
 using Chilling.Goods.Api.Core.Models;
 using Chilling.Goods.Api.Models;
@@ -9,7 +8,7 @@ namespace Chilling.Goods.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class BrandController: ControllerBase
+public class BrandController : ControllerBase
 {
     private readonly IBrandService _brandService;
     private readonly IMapper _mapper;
@@ -19,14 +18,14 @@ public class BrandController: ControllerBase
         _brandService = brandService;
         _mapper = mapper;
     }
-    
+
     /// <summary>
     /// Получение списка брендов
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     [HttpGet]
-    [ProducesResponseType( typeof(IEnumerable<BrandVm>), 200)]
+    [ProducesResponseType(typeof(IEnumerable<BrandVm>), 200)]
     public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
     {
         var data = await _brandService.GetAsync(cancellationToken);
@@ -75,6 +74,13 @@ public class BrandController: ControllerBase
     {
         var guid = Guid.Parse(id);
         await _brandService.DeleteAsync(guid, cancellationToken);
+        return NoContent();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> ClearCacheAsync()
+    {
+        await _brandService.ClearCacheAsync();
         return NoContent();
     }
 }

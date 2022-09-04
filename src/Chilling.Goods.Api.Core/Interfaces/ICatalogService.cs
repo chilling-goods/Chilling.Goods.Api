@@ -11,5 +11,11 @@ namespace Chilling.Goods.Api.Core.Interfaces
         public Task UpdateAsync(Catalog catalog, Guid id);
 
         public Task DeleteAsync(Guid id);
+
+        /// <summary>
+        /// Очистка кеша
+        /// </summary>
+        /// <returns></returns>
+        Task СlearCacheAsync();
     }
 }

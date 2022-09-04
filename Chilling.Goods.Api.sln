@@ -16,7 +16,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{75C4FAEF-3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chilling.Platform.Redis", "libs\Chilling.Platform.Redis\Chilling.Platform.Redis.csproj", "{42092F77-4EB6-4B78-B802-BB67232763C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chilling.Platform.Mapper", "libs\Chilling.Platform.Mapper\Chilling.Platform.Mapper.csproj", "{0B662274-85B2-4404-AA0E-1232DF33F1E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chilling.Platform.Mapper", "libs\Chilling.Platform.Mapper\Chilling.Platform.Mapper.csproj", "{0B662274-85B2-4404-AA0E-1232DF33F1E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3A6DC45A-1891-4757-9049-8DB635B64416}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

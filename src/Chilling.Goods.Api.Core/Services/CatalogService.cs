@@ -56,5 +56,10 @@ namespace Chilling.Goods.Api.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task СlearCacheAsync()
+        {
+            await _cache.RemoveAsync(CATALOGS_CACHE_KEY);
+        }
     }
 }
