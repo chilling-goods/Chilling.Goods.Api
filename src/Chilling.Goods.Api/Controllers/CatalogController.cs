@@ -33,9 +33,9 @@ namespace Chilling.Goods.Api.Controllers
         /// </summary>
         /// <returns>Список каталогов</returns>
         [HttpGet("")]
-        public async Task<ActionResult<List<CatalogVm>>> GetAllAsync()
+        public async Task<ActionResult<List<CatalogVm>>> GetAllAsync(CancellationToken cancellationToken)
         {
-            var response = await _service.GetAllAsync();
+            var response = await _service.GetAllAsync(cancellationToken);
 
             var result = _mapper.Map<Catalog, CatalogVm>(response).ToList();
 
@@ -43,32 +43,32 @@ namespace Chilling.Goods.Api.Controllers
         }
 
         [HttpPost("")]
-        public async Task<ActionResult<List<CatalogVm>>> AddAsync([FromBody] CatalogVm catalog)
+        public async Task<ActionResult<List<CatalogVm>>> AddAsync([FromBody] CatalogVm catalog, CancellationToken cancellationToken)
         {
             var mapResult = _mapper.Map<CatalogVm, Catalog>(catalog);
-            await _service.AddAsync(mapResult);
+            await _service.AddAsync(mapResult, cancellationToken);
             return NoContent();
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateAsync([FromBody] CatalogVm catalog, Guid id)
+        public async Task<IActionResult> UpdateAsync([FromBody] CatalogVm catalog, Guid id, CancellationToken cancellationToken)
         {
             var mapResult = _mapper.Map<CatalogVm, Catalog>(catalog);
-            await _service.UpdateAsync(mapResult, id);
+            await _service.UpdateAsync(mapResult, id, cancellationToken);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync(Guid id)
+        public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            await _service.DeleteAsync(id);
+            await _service.DeleteAsync(id, cancellationToken);
             return NoContent();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> ClearCacheAsync()
+        public async Task<IActionResult> ClearCacheAsync(CancellationToken cancellationToken)
         {
-            await _service.СlearCacheAsync();
+            await _service.СlearCacheAsync(cancellationToken);
             return NoContent();
         }
     }

@@ -5,7 +5,7 @@ namespace Chilling.Goods.Api.Data.Providers
 {
     public class CatalogProvider : ICatalogProvider
     {
-        public Task<List<CatalogDbo>> GetAllAsync()
+        public Task<List<CatalogDbo>> GetAllAsync(CancellationToken cancellationToken)
         {
             return Task.FromResult(new List<CatalogDbo>()
             {
@@ -24,17 +24,17 @@ namespace Chilling.Goods.Api.Data.Providers
                 }
             });
         }
-        public Task AddAsync(CatalogDbo catalog)
+        public Task AddAsync(CatalogDbo model, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(CatalogDbo catalog, Guid id)
+        public Task UpdateAsync(CatalogDbo model, Guid id, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(Guid id)
+        public Task DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

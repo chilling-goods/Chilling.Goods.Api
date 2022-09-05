@@ -5,7 +5,7 @@ namespace Chilling.Goods.Api.Data.Providers;
 
 public class BrandProvider : IBrandProvider
 {
-    public async Task<IEnumerable<BrandDbo>> GetAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<BrandDbo>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await Task.FromResult(new List<BrandDbo>()
         {
@@ -36,12 +36,12 @@ public class BrandProvider : IBrandProvider
         });
     }
 
-    public Task AddAsync(BrandDbo brand, CancellationToken cancellationToken)
+    public Task AddAsync(BrandDbo model, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(Guid id, BrandDbo brand, CancellationToken cancellationToken)
+    public Task UpdateAsync(BrandDbo model, Guid id, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }

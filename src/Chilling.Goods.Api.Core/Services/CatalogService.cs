@@ -28,36 +28,49 @@ namespace Chilling.Goods.Api.Core.Services
             _mapper = mapper;
         }
 
-        public async Task<List<Catalog>> GetAllAsync()
+        public async Task<IEnumerable<Catalog>> GetAllAsync(CancellationToken cancellationToken)
         {
-            var result = await _cache.GetAsync<List<Catalog>>(CATALOGS_CACHE_KEY);
+            var result = await _cache.GetAsync<IEnumerable<Catalog>>(CATALOGS_CACHE_KEY);
 
             if (result != null)
                 return result;
 
-            var response = await _provider.GetAllAsync();
+            var response = await _provider.GetAllAsync(cancellationToken);
             var mapResult = _mapper.Map<CatalogDbo, Catalog>(response).ToList();
             await _cache.SetAsync(CATALOGS_CACHE_KEY, mapResult);
 
             return mapResult;
         }
 
-        public Task AddAsync(Catalog catalog)
+        public async Task AddAsync(Catalog model, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var mapResult = _mapper.Map<Catalog, CatalogDbo>(model);
+            await _provider.AddAsync(mapResult, cancellationToken);
+
+            await СlearCacheAsync(cancellationToken);
         }
 
-        public Task UpdateAsync(Catalog catalog, Guid id)
+        public async Task UpdateAsync(Catalog model, Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!(await _cache.GetAsync<IEnumerable<Catalog>>(CATALOGS_CACHE_KEY)).Any(x => x.Id == id))
+                throw new Exception(); // TODO: Добавить исключение "Каталог с id <> не найден" - 404 
+
+            var mapResult = _mapper.Map<Catalog, CatalogDbo>(model);
+            await _provider.UpdateAsync(mapResult, id, cancellationToken);
+
+            await СlearCacheAsync(cancellationToken);
         }
 
-        public Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!(await _cache.GetAsync<IEnumerable<Catalog>>(CATALOGS_CACHE_KEY)).Any(x => x.Id == id))
+                throw new Exception(); // TODO: Добавить исключение "Каталог с id <> не найден" - 404 
+
+            await _provider.DeleteAsync(id, cancellationToken);
+            await СlearCacheAsync(cancellationToken);
         }
 
-        public async Task СlearCacheAsync()
+        public async Task СlearCacheAsync(CancellationToken cancellationToken)
         {
             await _cache.RemoveAsync(CATALOGS_CACHE_KEY);
         }
