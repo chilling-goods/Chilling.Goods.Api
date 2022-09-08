@@ -37,9 +37,6 @@ namespace Chilling.Goods.Api.Core.Maps
                 });
                 return brand;
             });
-            
-            Mapper.AddMap<IEnumerable<BrandDbo>, IEnumerable<Brand>>(source 
-                => _instance.Map<BrandDbo, Brand>(source).ToList());
         }
     }
 }

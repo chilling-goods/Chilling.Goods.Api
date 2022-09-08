@@ -9,7 +9,7 @@ public interface IBrandProvider
     /// </summary>
     /// <param name="cancellationToken">Токен</param>
     /// <returns>Список брендов</returns>
-    Task<IEnumerable<BrandDbo>> GetAsync(CancellationToken cancellationToken);
+    Task<IEnumerable<BrandDbo>> GetAllAsync(CancellationToken cancellationToken);
     
     /// <summary>
     /// Добавление нового бренда
@@ -17,7 +17,7 @@ public interface IBrandProvider
     /// <param name="brand">Модель бренда</param>
     /// <param name="cancellationToken">Токен</param>
     /// <returns></returns>
-    Task AddAsync(BrandDbo brand, CancellationToken cancellationToken);
+    Task AddAsync(BrandDbo model, CancellationToken cancellationToken);
 
     /// <summary>
     /// Обновлние модели бренда
@@ -26,7 +26,7 @@ public interface IBrandProvider
     /// <param name="brand">Обновленная модель</param>
     /// <param name="cancellationToken">Токен</param>
     /// <returns></returns>
-    Task UpdateAsync(Guid id, BrandDbo brand, CancellationToken cancellationToken);
+    Task UpdateAsync(BrandDbo model, Guid id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Удаление бренда

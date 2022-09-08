@@ -3,43 +3,45 @@ using Chilling.Goods.Api.Data.Models;
 
 namespace Chilling.Goods.Api.Data.Providers;
 
-public class BrandProvider: IBrandProvider
+public class BrandProvider : IBrandProvider
 {
-    public async Task<IEnumerable<BrandDbo>> GetAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<BrandDbo>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await Task.FromResult(new List<BrandDbo>()
         {
             new BrandDbo()
             {
                 Name = "test 1",
-                ProductTypes = new List<ProductTypeDbo>()
+                ProductTypes = new List<ProductTypeBrandConventionDbo>()
                 {
-                    new ProductTypeDbo()
+                    new ProductTypeBrandConventionDbo()
                     {
-                        Name = "test product type"
+                        Brand = null,
+                        ProductType = new ProductTypeDbo{ Name= "test product type" }
                     }
                 }
             },
             new BrandDbo()
             {
                 Name = "test 2",
-                ProductTypes = new List<ProductTypeDbo>()
+                ProductTypes = new List<ProductTypeBrandConventionDbo>()
                 {
-                    new ProductTypeDbo()
+                    new ProductTypeBrandConventionDbo()
                     {
-                        Name = "test product type"
+                        Brand = null,
+                        ProductType = new ProductTypeDbo{ Name= "test product type" }
                     }
                 }
             }
         });
     }
 
-    public Task AddAsync(BrandDbo brand, CancellationToken cancellationToken)
+    public Task AddAsync(BrandDbo model, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(Guid id, BrandDbo brand, CancellationToken cancellationToken)
+    public Task UpdateAsync(BrandDbo model, Guid id, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }

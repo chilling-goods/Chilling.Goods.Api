@@ -4,13 +4,13 @@ namespace Chilling.Goods.Api.Data.Interfaces
 {
     public interface ICatalogProvider
     {
-        public Task<List<CatalogDbo>> GetAllAsync();
+        public Task<List<CatalogDbo>> GetAllAsync(CancellationToken cancellationToken);
 
-        public Task AddAsync(CatalogDbo catalog);
+        public Task AddAsync(CatalogDbo model, CancellationToken cancellationToken);
 
-        public Task UpdateAsync(CatalogDbo catalog, Guid id);
+        public Task UpdateAsync(CatalogDbo model, Guid id, CancellationToken cancellationToken);
 
-        public Task DeleteAsync(Guid id);
+        public Task DeleteAsync(Guid id, CancellationToken cancellationToken);
 
     }
 }

@@ -3,37 +3,70 @@ using Chilling.Goods.Api.Core.Models;
 using Chilling.Goods.Api.Data.Interfaces;
 using Chilling.Goods.Api.Data.Models;
 using Chilling.Platform.Mapper.Abstracts;
+using Chilling.Platform.Redis;
 
 namespace Chilling.Goods.Api.Core.Services;
 
-public class BrandService: IBrandService
+public class BrandService : IBrandService
 {
-    private readonly IBrandProvider _brandProvider;
+    private const string BRANDS_CACHE_KEY = "BRANDS_KEY";
+
+    private readonly IBrandProvider _provider;
     private readonly IMapper _mapper;
+    private readonly IRedisProvider _cache;
 
-    public BrandService(IBrandProvider brandProvider, IMapper mapper)
+    public BrandService(IBrandProvider brandProvider, IMapper mapper, IRedisProvider redisProvider)
     {
-        _brandProvider = brandProvider;
+        _provider = brandProvider;
         _mapper = mapper;
-    }
-    
-    public async Task<IEnumerable<Brand>> GetAsync(CancellationToken cancellationToken)
-    {
-       return _mapper.Map<IEnumerable<BrandDbo>, IEnumerable<Brand>>(await _brandProvider.GetAsync(cancellationToken));
+        _cache = redisProvider;
     }
 
-    public async Task AddAsync(Brand brand, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Brand>> GetAllAsync(CancellationToken cancellationToken)
     {
-        await _brandProvider.AddAsync(_mapper.Map<Brand, BrandDbo>(brand), cancellationToken);
+        var result = await _cache.GetAsync<IEnumerable<Brand>>(BRANDS_CACHE_KEY);
+
+        if (result != null)
+            return result;
+
+        var response = await _provider.GetAllAsync(cancellationToken);
+        var mapResult = _mapper.Map<BrandDbo, Brand>(response).ToList();
+        await _cache.SetAsync(BRANDS_CACHE_KEY, mapResult);
+
+        return mapResult;
     }
 
-    public async Task UpdateAsync(Guid id, Brand brand, CancellationToken cancellationToken)
+    public async Task AddAsync(Brand model, CancellationToken cancellationToken)
     {
-        await _brandProvider.UpdateAsync(id, _mapper.Map<Brand, BrandDbo>(brand), cancellationToken);
+        var mapResult = _mapper.Map<Brand, BrandDbo>(model);
+        await _provider.AddAsync(mapResult, cancellationToken);
+
+        await ClearCacheAsync(cancellationToken);
+    }
+
+    public async Task UpdateAsync(Brand model, Guid id, CancellationToken cancellationToken)
+    {
+        if (!(await _cache.GetAsync<IEnumerable<Brand>>(BRANDS_CACHE_KEY)).Any(x => x.Id == id))
+            throw new Exception(); // TODO: Добавить исключение "Бренд с id <> не найден" - 404 
+
+        var mapResult = _mapper.Map<Brand, BrandDbo>(model);
+
+        await _provider.UpdateAsync(mapResult, id, cancellationToken);
+        await ClearCacheAsync(cancellationToken);
     }
 
     public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
     {
-        await _brandProvider.DeleteAsync(id, cancellationToken);
+        if (!(await _cache.GetAsync<IEnumerable<Brand>>(BRANDS_CACHE_KEY)).Any(x => x.Id == id))
+            throw new Exception(); // TODO: Добавить исключение "Бренд с id <> не найден" - 404 
+
+        await _provider.DeleteAsync(id, cancellationToken);
+        await ClearCacheAsync(cancellationToken);
+    }
+
+    public async Task ClearCacheAsync(CancellationToken cancellationToken)
+    {
+        await _cache.RemoveAsync(BRANDS_CACHE_KEY);
+
     }
 }

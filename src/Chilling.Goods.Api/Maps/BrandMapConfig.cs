@@ -15,22 +15,15 @@ namespace Chilling.Goods.Api.Maps
             {
                 Id = source.Id,
                 Name = source.Name,
-                ProductTypes = source.ProductTypes != null
-                    ? _instance.Map<ProductType, ProductTypeVm>(source.ProductTypes).ToList()
-                    : null
+                ProductTypes = _instance.Map<ProductType, ProductTypeVm>(source.ProductTypes)?.ToList()
             });
 
             Mapper.AddMap<BrandVm, Brand>((source) => new Brand
             {
                 Id = source.Id,
                 Name = source.Name,
-                ProductTypes = source.ProductTypes != null
-                    ? _instance.Map<ProductTypeVm, ProductType>(source.ProductTypes).ToList()
-                    : null
+                ProductTypes = _instance.Map<ProductTypeVm, ProductType>(source.ProductTypes)?.ToList()
             });
-            
-            Mapper.AddMap<IEnumerable<Brand>, IEnumerable<BrandVm>>(source 
-                => _instance.Map<Brand, BrandVm>(source).ToList());
         }
     }
 }
