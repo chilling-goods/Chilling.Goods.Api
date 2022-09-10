@@ -1,7 +1,6 @@
 ﻿using Chilling.Goods.Api.Core.Models;
 using Chilling.Goods.Api.Models;
 using Chilling.Platform.Mapper;
-using Chilling.Platform.Mapper.Abstracts;
 
 namespace Chilling.Goods.Api.Maps
 {
