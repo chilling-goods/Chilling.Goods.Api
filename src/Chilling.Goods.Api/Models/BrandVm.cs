@@ -5,20 +5,8 @@ namespace Chilling.Goods.Api.Models
     /// <summary>
     /// Бренд
     /// </summary>
-    public class BrandVm
+    public class BrandVm : BaseEntityVm
     {
-        /// <summary>
-        /// ID
-        /// </summary>
-        [JsonProperty("id")]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// Название
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
         /// <summary>
         /// Типы продукта
         /// </summary>
