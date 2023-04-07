@@ -3,20 +3,8 @@ namespace Chilling.Goods.Api.Models;
 /// <summary>
 /// Модель магазина
 /// </summary>
-public class StoreVm
+public class StoreVm: BaseEntityVm
 {
-    /// <summary>
-    /// Идентификатор
-    /// </summary>
-    [JsonPropertyName("id")]
-    public Guid Id { get; set; }
-
-    /// <summary>
-    /// Название
-    /// </summary>
-    [JsonPropertyName("name")]
-    public string Name { get; set; }
-
     /// <summary>
     /// Телефон
     /// </summary>
